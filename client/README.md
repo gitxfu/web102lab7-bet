@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+# Bet 1.0 - Challenge Tracking App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses Supabase for the backend database.
+
+## Setup Instructions
+
+### 1. Supabase Setup
+
+1. Go to [Supabase](https://supabase.com/) and create an account
+2. Create a new project:
+   - Click "New Project"
+   - Name your project (e.g., "bet")
+   - Set a database password
+   - Click "Create new project"
+
+3. Create the Posts table:
+   - Go to Database → Tables
+   - Click "New Table"
+   - Name: Posts
+   - Columns:
+     - id (default)
+     - created_at (default)
+     - title (type: text)
+     - author (type: text)
+     - description (type: text)
+     - betCount (type: numeric, default: 0)
+   - Uncheck "Enable Row Level Security"
+   - Check "Enable Realtime"
+   - Click "Save"
+
+4. Get your API credentials:
+   - Go to Project Settings → API
+   - Copy your Project URL and anon/public API key
+   - Create a file `src/client.js` with:
+
+```javascript
+import { createClient } from '@supabase/supabase-js'
+
+const URL = 'your-project-url';
+const API_KEY = 'your-anon-key';
+
+export const supabase = createClient(URL, API_KEY);
+```
+
+### 2. Project Setup
+
+1. Clone the repository
+2. Install dependencies:
+```bash
+cd client
+npm install
+```
+
+3. Install Supabase client:
+```bash
+npm install @supabase/supabase-js
+```
+
+4. Start the development server:
+```bash
+npm start
+```
 
 ## Available Scripts
 
-In the project directory, you can run:
-
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in interactive watch mode.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `build` folder.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Create new challenges with title, author, and description
+- View all challenges on the homepage
+- Edit existing challenges
+- Delete challenges
+- Track bet counts for each challenge
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started)
+- [React documentation](https://reactjs.org/)
+- [Supabase documentation](https://supabase.com/docs)
